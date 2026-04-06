@@ -37,10 +37,15 @@ ul li a {
   text-align: center;
   padding: 5px 5px;
   text-decoration: none;
+  transition: border-radius 0.4s ease, 
+              background-color 0.4s ease,
+              opacity 0.4s ease;
 }
 
 ul li a:hover {
-  background-color: #111111;
+  opacity: .6;
+  background-color: #7e7e7e;
+  border-radius: 15px;
 }
 
 h1 {
