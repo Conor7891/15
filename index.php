@@ -14,7 +14,7 @@ $page = $_POST['page'] ?? 'index';
     <nav>
         <div class="div1">
             <img src = "images/Logo.jpg" alt = "PixelPushers Logo" class = "logo">
-            <h1>Welcome to the PixelPushers Color Generator!</h1>
+            <h1 id="TitleHeader">Welcome to the PixelPushers Color Generator!</h1>
         </div>
         <div class="div2">
             <ul>

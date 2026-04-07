@@ -1,5 +1,4 @@
     <div class="parent">
-        
         <div class="div3">
             <h1>Welcome to PixelPushers Color Generator Tool</h1>
             <p>Generating a color palette can be hard, so here at PixelPushers, we have developed a tool to quickly and easily create color palletes that you can
