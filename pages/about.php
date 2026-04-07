@@ -12,8 +12,7 @@
     <div class="parent">
         <div class="div3">
             <h1>Meet the Team</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        </div>
+            <p>We are highly dedicated programmers who love to write backend code. We are committed to delivering the best possible color generator, with ease of use for the end user. </p>        </div>
         <div class="div4">
             <img src="./images/lukeProfile.jpg" alt=profile photo of luke></img>
             <h4>Luke Livingston</h4>
