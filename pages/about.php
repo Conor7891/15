@@ -30,10 +30,12 @@
             </p>
         </div>
         <div class="div6">
-            <img src="" alt=placeholder></img>
-            <h4>FIRST LAST</h4>
-            <h5>ROLE</h5>
-            <p>about me</p>
+            <img src="./images/AaronProfile.JPG" alt=profile photo of aaron></img>
+            <h4>Aaron Barnes</h4>
+            <h5>Programmer</h5>
+            <p>Aaron is a spirit of scrum and software development, he loves to coloborate with others and share his knowledge.
+                Aaron enjoys playing video games, playing intramural sports, and going to the movies.
+            </p>
         </div>
         <div class="div7">
             <img src="" alt=placeholder></img>
