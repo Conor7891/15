@@ -8,7 +8,10 @@ $page = $_POST['page'] ?? 'index';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PixelPushers Color Generator</title>
-    <link rel="stylesheet" href="./style/about.css">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="pragma" content="no-cache">
+    <link rel="stylesheet" href="./style/<?php echo $page?>.css">
 </head>
 <header>
     <nav>
@@ -19,15 +22,16 @@ $page = $_POST['page'] ?? 'index';
         <div class="div2">
             <ul>
                 <form method="POST">
-                    <button name="page" value="index">Home</button>
-                    <button name="page" value="about">About Us</button>
-                    <button name="page" value="color">Color Coordinator</button>
+                    <li><button name="page" value="index">Home</button></li>
+                    <li><button name="page" value="about">About Us</button></li>
+                    <li><button name="page" value="color">Color Coordinator</button></li>
                 </form>
             </ul>
         </div>
     </nav>
 </header>
 <body>
+    <div class="divBody">
     <?php
         switch ($page) {
             case 'index':
@@ -41,5 +45,6 @@ $page = $_POST['page'] ?? 'index';
                 break;
         }
     ?>
+    </div>
 </body>
 </html>
