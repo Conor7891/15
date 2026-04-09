@@ -66,6 +66,18 @@ button:hover {
   border-radius: 5px;
 }
 
+ul li:first-child button {
+    border-radius: 12px 0 0 12px;
+}
+
+ul li:last-child button {
+    border-radius: 0 12px 12px 0;
+}
+
+ul li button:not(:first-child):not(:last-child) {
+    border-radius: 0;
+}
+
 h1 {
     margin: 0;
 }
