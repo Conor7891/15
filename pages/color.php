@@ -1,12 +1,13 @@
 <?php
     $number = $_POST['number'] ?? 0; 
     $number_of_colors = $_POST['number_of_colors'] ?? 0;
+    $isValid = true;
 
     if ($number < 1 || $number > 26) {
-        echo "INVALID";
+        $isValid = false;
     }
     if ($number_of_colors < 1 || $number_of_colors > 10) {
-        echo "INVALID";
+        $isValid = false;
     }
 
     $colors = ["Red", "Orange", "Yellow", "Green", "Blue", "Purple", "Grey", "Brown", "Black", "Teal"];
