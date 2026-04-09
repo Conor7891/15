@@ -64,7 +64,7 @@
                         <td><?php echo $n ?>
                     <?php endif; ?>
                     <?php if ($n != 0 && $col < $number): ?>
-                        <td> 0 </td>
+                        <td></td>
                     <?php endif; ?>                    
                 <?php endfor; ?>
                 </tr>
