@@ -14,6 +14,7 @@ $page = $_POST['page'] ?? 'index';
     <link rel="stylesheet" href="./style/style.css">
     <link rel="stylesheet" href="./style/<?php echo $page; ?>.css">
 </head>
+<?php if ($page != 'print'): ?>
 <header>
     <nav>
         <div class="div1">
@@ -31,6 +32,7 @@ $page = $_POST['page'] ?? 'index';
         </div>
     </nav>
 </header>
+<?php endif; ?>
 <body>
     <div class="divBody">
     <?php
