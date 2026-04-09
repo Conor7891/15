@@ -33,7 +33,6 @@ ul {
     padding: 0;
     overflow: hidden;
     background-color: var(--dark-blue);
-    border-radius: 25px;
 }
 
 ul li {
