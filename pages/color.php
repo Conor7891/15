@@ -1,12 +1,16 @@
 <?php
-    $number = $_POST['number'] ?? 0; 
-    $number_of_colors = $_POST['number_of_colors'] ?? 0;
+    $number = $_POST['number'] ?? 1; 
+    $number_of_colors = $_POST['number_of_colors'] ?? 1;
     $isValid = true;
 
+    $errors = [];
+
     if ($number < 1 || $number > 26) {
+        $errors[] = "Number of Rows and Columns not in range !!!";
         $isValid = false;
     }
     if ($number_of_colors < 1 || $number_of_colors > 10) {
+        $errors[] = "Number of columns not in range !!!";
         $isValid = false;
     }
 
@@ -27,16 +31,16 @@
     <form class="inputForm" method="POST">
         <input type="hidden" name="page" value="color">
         <label>Rows & Columns (1-26):</label>
-        <input type="number" min="1" max="26" name="number" required>
+        <input type="number" name="number" required>
         <br>
         <label>Number of Colors (1-10):</label>
-        <input type="number" min="1" max="10" name="number_of_colors" required>
+        <input type="number" name="number_of_colors" required>
         <br>
         <button type="submit">Generate</button>
         <br>
     </form>
     <div class="ColorDiv">
-    <?php if ($_SERVER["REQUEST_METHOD"] == "POST"): ?>
+    <?php if ($_SERVER["REQUEST_METHOD"] == "POST" && $isValid): ?>
         <h1>Color Selection</h1>
         <table class="colorlist">
             <?php for($i = 0; $i < $number_of_colors; $i++): ?>
@@ -56,9 +60,8 @@
                 </tr>
             <?php endfor; ?>
         </table>
-        <?php endif; ?>
         <h1>Coordinate Grid</h1>
-        <table>
+        <table class="grid">
             <?php for($n = 0; $n < $number + 1; $n++): ?>
                 <tr>
                 <?php for($col = 0; $col < $number + 1; $col++): ?>
@@ -85,5 +88,11 @@
             <button type="submit" name="page" value="print">View Printable Version</button>
         </form>
         </div>
+        <?php else: ?>
+            <?php foreach($errors as $e): ?>
+                <?php echo $e; ?>
+                <br>
+            <?php endforeach; ?>
+        <?php endif; ?>
 </body>
 </html>

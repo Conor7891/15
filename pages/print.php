@@ -30,11 +30,11 @@
     <h1>Pixel Pushers</h1>
     <p>Professional Color Coordination Tools — Printable View</p>
     <h1>Color Selection</h1>
-        <table>
+        <table class="colorlist">
             <?php if ($isValid): ?>
             <?php for($i = 0; $i < $number_of_colors; $i++): ?>
                 <tr>
-                    <td>
+                    <td class="left">
                         <select>
                             <?php foreach($colors as $c): ?>
                                 <option value="<?php echo $c; ?>">
@@ -42,7 +42,7 @@
                                 </option>
                             <?php endforeach; ?>
                         </select>
-                    </td>
+                    </td class="right">
                     <td>
                         <?php echo $colors[$i] ?>
                     </td>
@@ -50,7 +50,7 @@
             <?php endfor; ?>
         </table>
         <h1>Coordinate Grid</h1>
-        <table>
+        <table class="grid">
             <?php for($n = 0; $n < $number + 1; $n++): ?>
                 <tr>
                 <?php for($col = 0; $col < $number + 1; $col++): ?>
