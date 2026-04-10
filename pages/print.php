@@ -45,7 +45,7 @@
             <?php endfor; ?>
         </table>
         <h1>Coordinate Grid</h1>
-        <table>
+        <table class="grid">
             <?php for($n = 0; $n < $number + 1; $n++): ?>
                 <tr>
                 <?php for($col = 0; $col < $number + 1; $col++): ?>
