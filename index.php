@@ -1,5 +1,14 @@
 <?php 
+require __DIR__ . '/db.php';
 $page = $_POST['page'] ?? 'index';
+
+$colorsReturned = $conn->query('SELECT * FROM colors');
+if ($colorsReturned->num_rows > 0) {
+    $colors = $colorsReturned->fetch_all();
+}
+
+//DEBUG to test DB 
+echo json_encode($colors);
 ?>
 
 <!DOCTYPE html>
