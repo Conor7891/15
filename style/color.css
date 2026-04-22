@@ -140,6 +140,8 @@ body {
 
 .ColorDiv {
     padding-top: 75px;
+    display: grid;
+    justify-items: center;
 }
 
 table {
