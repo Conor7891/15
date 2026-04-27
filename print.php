@@ -28,6 +28,7 @@
 </head>
 <body>
 <div class="container">
+    <img src="./images/Logo.jpg" alt="Pixel Pushers Logo" class="logo">
     <h1>Pixel Pushers</h1>
     <p>Professional Color Coordination Tools — Printable View</p>
 
