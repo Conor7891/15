@@ -5,6 +5,7 @@
     
     $errors = [];
     
+    
     if (isset($_POST['x'])) {
         if ($number < 1 || $number > 26) {
             $errors[] = "Number of Rows and Columns not in range !!!";
