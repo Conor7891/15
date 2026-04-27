@@ -7,8 +7,6 @@ if ($colorsReturned->num_rows > 0) {
     $colors = $colorsReturned->fetch_all();
 }
 
-//DEBUG to test DB 
-echo json_encode($colors);
 ?>
 
 <!DOCTYPE html>
