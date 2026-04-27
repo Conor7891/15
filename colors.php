@@ -82,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <label>Hex Value:</label>
         <input type="text" name="hex" required>
         <br>
-        <button type="submit" name="action" value="add">Add Color</button>
+        <button class="rounded-btn" type="submit" name="action" value="add">Add Color</button>
     </form>
 </div>
 <div class="color-edit">
@@ -105,6 +105,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <label>New Hex Value:</label>
         <input type="text" name="newHex" required>
         <br>
-        <button type="submit" name="action" value="edit">Modify Color</button>
+        <button class="rounded-btn" type="submit" name="action" value="edit">Modify Color</button>
     </form>
 </div>
