@@ -47,21 +47,28 @@
             <table class="colorlist">
             <?php for($i = 0; $i < $number_of_colors; $i++): ?>
                 <tr>
-                    <td class="left">
-                        <select name="selectedColors[]">
-                            <?php foreach($colors as $c): ?>
-                                <option value="<?= $c ?>" <?= ($c === $colors[$i]) ? 'selected' : '' ?>>
-                                    <?= $c ?>
-                                </option>
-                            <?php endforeach; ?>
-                        </select>
-                    </td>
-                    <td class="right">
-                        <?php echo $colors[$i] ?>
-                    </td>
-                </tr>
-            <?php endfor; ?>
-            </table>
+        <td>
+            <input type="radio" name="activeColor"
+                   value="<?= $colors[$i] ?>"
+                   <?= $i === 0 ? 'checked' : '' ?>>
+        </td>
+
+        <td>
+            <select class="colorDropdown" data-index="<?= $i ?>">
+                <?php foreach($colors as $c): ?>
+                    <option value="<?= $c ?>" <?= ($c === $colors[$i]) ? 'selected' : '' ?>>
+                        <?= $c ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+        </td>
+
+        <td class="coordList" id="coords-<?= $i ?>"></td>
+    </tr>
+<?php endfor; ?>
+</table>
+
+<div id="errorMsg"></div>
         <h1>Coordinate Grid</h1>
         <table class="grid">
             <?php for($n = 0; $n < $number + 1; $n++): ?>
@@ -76,8 +83,10 @@
                     <?php if ($col === 0 && $n != 0): ?>
                         <td><?php echo $n ?>
                     <?php endif; ?>
-                    <?php if ($n != 0 && $col < $number): ?>
-                        <td></td>
+                    <?php if ($n != 0 && $col != 0 && $col <= $number): ?>
+                        <td class="paintCell"
+                            data-coord="<?= $alphabet[$col - 1] . $n ?>">
+                        </td>
                     <?php endif; ?>                    
                 <?php endfor; ?>
                 </tr>
@@ -97,5 +106,98 @@
                 <br>
             <?php endforeach; ?>
         <?php endif; ?>
+
+
+<script>
+let radios = document.querySelectorAll('input[name="activeColor"]');
+let dropdowns = document.querySelectorAll('.colorDropdown');
+
+let activeColor = document.querySelector('input[name="activeColor"]:checked').value;
+
+let colorMap = {};
+let previousValues = [];
+
+
+dropdowns.forEach((dd, i) => {
+    previousValues[i] = dd.value;
+    colorMap[dd.value] = [];
+});
+
+radios.forEach(r => {
+    r.addEventListener('change', () => {
+        activeColor = r.value;
+    });
+});
+
+
+document.querySelectorAll('.paintCell').forEach(cell => {
+    cell.addEventListener('click', () => {
+        let coord = cell.dataset.coord;
+
+        cell.style.backgroundColor = activeColor;
+
+        if (!colorMap[activeColor].includes(coord)) {
+            colorMap[activeColor].push(coord);
+        }
+
+        updateCoords();
+    });
+});
+
+function updateCoords() {
+    dropdowns.forEach((dd, i) => {
+        let color = dd.value;
+        let coords = colorMap[color] || [];
+
+        coords.sort((a, b) => {
+            let L1 = a[0], N1 = parseInt(a.slice(1));
+            let L2 = b[0], N2 = parseInt(b.slice(1));
+
+            if (L1 === L2) return N1 - N2;
+            return L1.localeCompare(L2);
+        });
+
+        document.getElementById("coords-" + i).innerText = coords.join(", ");
+    });
+}
+
+dropdowns.forEach((dd, i) => {
+    dd.addEventListener('change', () => {
+        let newColor = dd.value;
+
+        let used = Array.from(dropdowns).map(d => d.value);
+        let count = used.filter(c => c === newColor).length;
+
+        if (count > 1) {
+            dd.value = previousValues[i];
+            showError("Each color can only be used once.");
+            return;
+        }
+
+        let oldColor = previousValues[i];
+
+        colorMap[newColor] = colorMap[oldColor] || [];
+        delete colorMap[oldColor];
+
+        document.querySelectorAll('.paintCell').forEach(cell => {
+            if (cell.style.backgroundColor === oldColor) {
+                cell.style.backgroundColor = newColor;
+            }
+        });
+
+        previousValues[i] = newColor;
+        clearError();
+        updateCoords();
+    });
+});
+
+function showError(msg) {
+    document.getElementById("errorMsg").innerText = msg;
+}
+
+function clearError() {
+    document.getElementById("errorMsg").innerText = "";
+}
+</script>
 </body>
 </html>
