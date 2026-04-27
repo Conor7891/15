@@ -48,19 +48,16 @@ echo json_encode($colors);
     <?php
         switch ($page) {
             case 'index':
-                include './home.php';
+                include 'home.php';
                 break;
             case 'about':
-                include './about.php';
+                include 'about.php';
                 break;
             case 'color':
-                include './color.php';
-                break;
-            case 'color-selection':
-                include './colors.php';
+                include 'color.php';
                 break;
             case 'print':
-                include './print.php';
+                include 'print.php';
                 break;
         }
     ?>
