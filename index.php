@@ -59,6 +59,9 @@ echo json_encode($colors);
             case 'print':
                 include 'print.php';
                 break;
+            case 'color-selection':
+                include 'colors.php';
+                break;
         }
     ?>
     </div>
