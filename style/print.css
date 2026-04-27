@@ -73,11 +73,16 @@ a, button {
     color: var(--dark-text);
 }
 
-.left {
+.colorlist th {
+    background-color: #a0a0a0;
+}
+
+.colorlist .colors {
+    background-color: #dfdfdf;
     width: 20%;
 }
 
-.right {
+.positions {
     width: 80%;
 }
 

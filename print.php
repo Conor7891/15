@@ -25,20 +25,22 @@
 <body>
   <div class="container">
 
-    <img src="images/Logo.jpg" class="logo">
-
     <h1>Pixel Pushers</h1>
     <p>Professional Color Coordination Tools — Printable View</p>
     <?php if ($isValid): ?>
     <?php $selectedColors = $_POST['selectedColors'] ?? [];?>
     <h1>Color Selection</h1>
         <table class="colorlist">  
+            <tr>
+                <th>Color</th>
+                <th>Coordinates</th>
+            </tr>
             <?php for($i = 0; $i < $number_of_colors; $i++): ?>
                 <tr>
-                    <td class="left">
+                    <td class="colors">
                         <?= $selectedColors[$i] ?? "Red" ?>
                     </td>
-                    <td class="right">
+                    <td class="positions">
                         <?php echo $colors[$i] ?>
                     </td>
                 </tr>
