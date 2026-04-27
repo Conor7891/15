@@ -1,9 +1,9 @@
 <?php
 
 define('DB_HOST', 'helmi.cs.colostate.edu');
-define('DB_USER', 'YOUR_NETID');
-define('DB_PASS', 'YOUR_PASSWORD');
-define('DB_NAME', 'YOUR_NETID');
+define('DB_USER', 'Your_NetId'); // Replace with your actual database username
+define('DB_PASS', 'Your_Password'); // Replace with your actual database password
+define('DB_NAME', 'Your_NetId'); // Replace with your actual database name
 
 define('SSL_CERT', '/usr/local/ssl/server-cert.pem');
 define('SSL_CA',   '/usr/local/ssl/ca-cert.pem');

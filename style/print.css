@@ -4,17 +4,14 @@ html, body {
     font-family: Arial, sans-serif;
 }
 
-
 .container {
     width: 800px;
     margin: 40px auto;
 }
 
-
 html {
     filter: grayscale(100%);
 }
-
 
 .logo {
     width: 70px;
@@ -33,13 +30,11 @@ p {
     font-size: 13px;
 }
 
-
 hr {
     border: none;
     border-top: 2px solid #333;
     margin: 10px 0 25px 0;
 }
-
 
 h2 {
     font-size: 16px;
@@ -62,43 +57,37 @@ a, button {
     margin-bottom: 15px;
 }
 
+
 .colorlist {
-    width: 1000px;
+    width: 100%;
+    border-collapse: collapse;
     table-layout: fixed;
 }
 
-.colorlist td {
-    border: 1px solid var(--dark-text);
-    height: 40px;
-    color: var(--dark-text);
-}
-
 .colorlist th {
-    background-color: #a0a0a0;
+    background-color: #b0b0b0;
+    font-weight: bold;
+    padding: 10px 12px;
+    text-align: left;
+    border: 1px solid #999;
 }
 
-.colorlist .colors {
-    background-color: #dfdfdf;
-    width: 20%;
+.colorlist td {
+    border: 1px solid #ccc;
+    height: 40px;
+    padding: 10px 12px;
+    vertical-align: middle;
 }
 
-.positions {
-    width: 80%;
+.colorlist td.colors {
+    background-color: #e8e8e8;
+    font-weight: bold;
+    width: 25%;
 }
 
-.colorlist select {
-    width: 100%;
-    border: 1px solid var(--teal);
-    color: var(--dark-text);
-}
-
-.inputForm input, .inputForm button {
-    margin-top: 15px;
-    margin-bottom: 15px;
-}
-
-.ColorDiv {
-    padding-top: 75px;
+.colorlist td.positions {
+    background-color: #ffffff;
+    width: 75%;
 }
 
 table {
@@ -111,7 +100,7 @@ td, th {
     font-size: 14px;
 }
 
-table.grid td, 
+table.grid td,
 table.grid th {
     width: 50px;
     height: 50px;
@@ -120,10 +109,12 @@ table.grid th {
     box-sizing: border-box;
     font-size: 12px;
     padding: 0;
+    font-weight: bold;
 }
 
 table.grid th {
-    font-size: 20px;
+    font-size: 14px;
+    background-color: #e8e8e8;
 }
 
 @media print {

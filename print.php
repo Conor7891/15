@@ -1,51 +1,54 @@
 <?php
+    require_once 'db.php';
+
     $number = $_POST['number'] ?? 0; 
     $number_of_colors = $_POST['number_of_colors'] ?? 0;
     $isValid = true;
 
-    if ($number < 1 || $number > 26) {
-        $isValid = false;
-    }
-    if ($number_of_colors < 1 || $number_of_colors > 10) {
-        $isValid = false;
-    }
+    $result = $conn->query("SELECT id, name, hex_value FROM colors ORDER BY id");
+    $allColors = $result->fetch_all(MYSQLI_ASSOC);
+    $maxColors = count($allColors);
 
-    $colors = ["Red", "Orange", "Yellow", "Green", "Blue", "Purple", "Grey", "Brown", "Black", "Teal"];
+    if ($number < 1 || $number > 26)                          $isValid = false;
+    if ($number_of_colors < 1 || $number_of_colors > $maxColors) $isValid = false;
+
+    $colorNames = $_POST['colorNames'] ?? [];
+    $colorHexes = $_POST['colorHexes'] ?? [];
+    $coordLists = $_POST['coordLists'] ?? [];
+
     $alphabet = range('A', 'Z');
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TITLE</title>
+    <title>Pixel Pushers — Print View</title>
     <link rel="stylesheet" href="./style/print.css">
 </head>
 <body>
-  <div class="container">
-
+<div class="container">
     <h1>Pixel Pushers</h1>
     <p>Professional Color Coordination Tools — Printable View</p>
+
     <?php if ($isValid): ?>
-    <?php $selectedColors = $_POST['selectedColors'] ?? [];?>
-    <h1>Color Selection</h1>
-        <table class="colorlist">  
-            <tr>
-                <th>Color</th>
-                <th>Coordinates</th>
-            </tr>
-            <?php for($i = 0; $i < $number_of_colors; $i++): ?>
-                <tr>
-                    <td class="colors">
-                        <?= $selectedColors[$i] ?? "Red" ?>
-                    </td>
-                    <td class="positions">
-                        <?php echo $colors[$i] ?>
-                    </td>
-                </tr>
-            <?php endfor; ?>
-        </table>
+
+    <h2>Color Selection</h2>
+    <table class="colorlist">
+        <tr>
+            <th>Color</th>
+            <th>Coordinates</th>
+        </tr>
+        <?php for ($i = 0; $i < $number_of_colors; $i++): ?>
+        <tr>
+            <td class="colors">
+                <?= htmlspecialchars($colorNames[$i] ?? 'Unknown') ?> — <?= htmlspecialchars($colorHexes[$i] ?? '') ?>
+            </td>
+            <td class="positions">
+                <?= htmlspecialchars($coordLists[$i] ?? '') ?>
+            </td>
+        </tr>
+        <?php endfor; ?>
         <h1>Coordinate Grid</h1>
         <table class="grid">
             <?php for($n = 0; $n < $number + 1; $n++): ?>
@@ -71,3 +74,4 @@
     
 </body>
 </html>
+    
