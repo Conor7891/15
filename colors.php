@@ -11,17 +11,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $name = $_POST['name'];
         $hex = $_POST['hex'];
 
-        $sql = 'SELECT COUNT(*) FROM colors WHERE hex = $hex';
+        $sql = "SELECT COUNT(*) FROM colors WHERE hex_value = '$hex'";
         $name_res = $conn->query($sql);
-        $sql = 'SELECT COUNT(*) FROM colors WHERE name = $name';
+        $name_count = $name_res->fetch_row()[0];
+        $sql = "SELECT COUNT(*) FROM colors WHERE name = '$name'";
         $hex_res = $conn->query($sql);
+        $hex_count = $hex_res->fetch_row()[0];
 
-        if ($name_res != 0 || $hex_res != 0) {
+        if ($name_count != 0 || $hex_count != 0) {
             $errors[] = 'Cannot place duplicates';
         }
 
-        if (!errors){
-            $sql = "INSERT INTO colors VALUES ('$name', '$hex')";
+        if (!$errors){
+            $sql = "INSERT INTO colors (name, hex_value) VALUES ('$name', '$hex')";
             $result = $conn->query($sql);
         }
 
@@ -32,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $name = $_POST['name'];
         $hex = $_POST['hex'];
         
-        $sql = 'SELECT COUNT(*) FROM colors WHERE hex = $hex';
+        $sql = 'SELECT COUNT(*) FROM colors WHERE hex_value = $hex';
         $name_res = $conn->query($sql);
         $sql = 'SELECT COUNT(*) FROM colors WHERE name = $name';
         $hex_res = $conn->query($sql);
@@ -63,3 +65,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
+<div class="header">
+    <h1>Color Selection</h1>
+    <p>Manage colors to use with the color coordinator</p>
+</div>
+<div class="color-add">
+    <h2>Add a Color</h2>
+    <form method="POST" action="?page=color-selection">
+        <input type="hidden" name="page" value="color-selection">
+        <label>Color Name:</label>
+        <input type="text" name="name" required>
+        <br>
+        <label>Hex Value:</label>
+        <input type="text" name="hex" required>
+        <br>
+        <button type="submit" name="action" value="add">Add Color</button>
+    </form>
+</div>
