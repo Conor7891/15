@@ -4,7 +4,7 @@
         <p>Generating a color palette can be hard, so here at PixelPushers, we have developed a tool to quickly and easily create color palletes that you can
                 use for website design, paintings, presentations, or more! Simply press the button below to start.
         </p>
-        <form method="POST">
+        <form method="GET">
             <button id="ColorButton" type="submit" name="page" value="color">Try the Color Coordinator</button>
         </form>
     </div>
