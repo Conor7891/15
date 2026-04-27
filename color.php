@@ -93,12 +93,12 @@
             <?php endfor; ?>
         </table>
 
-        <form method="POST" action="?page=print" target="_blank">
-            <input type="hidden" name="page" value="print">
-            <input type="hidden" name="number" value="<?= $number ?>">
-            <input type="hidden" name="number_of_colors" value="<?= $number_of_colors ?>">
-            <button type="submit" name="page" value="print">View Printable Version</button>
-        </form>
+        <form method="POST" action="?page=print" target="_blank" id="printForm">
+        <input type="hidden" name="page" value="print">
+        <input type="hidden" name="number" value="<?= $number ?>">
+        <input type="hidden" name="number_of_colors" value="<?= $number_of_colors ?>">
+        <button type="button" onclick="submitPrintForm()">View Printable Version</button>
+</form>
 
     <?php endif; ?>
     <?php if (isset($_POST['x']) && !$isValid): ?>
@@ -193,6 +193,41 @@ if (radios.length > 0) {
 
     function showError(msg) { document.getElementById("errorMsg").innerText = msg; }
     function clearError() { document.getElementById("errorMsg").innerText = ""; }
+}
+</script>
+
+<script>
+function submitPrintForm() {
+    const form = document.getElementById('printForm');
+
+    form.querySelectorAll('.print-data').forEach(el => el.remove());
+
+    dropdowns.forEach((dd, i) => {
+        const selectedOption = dd.options[dd.selectedIndex];
+
+        const nameInput = document.createElement('input');
+        nameInput.type = 'hidden';
+        nameInput.name = 'colorNames[]';
+        nameInput.value = selectedOption.text;
+        nameInput.className = 'print-data';
+        form.appendChild(nameInput);
+
+        const hexInput = document.createElement('input');
+        hexInput.type = 'hidden';
+        hexInput.name = 'colorHexes[]';
+        hexInput.value = dd.value;
+        hexInput.className = 'print-data';
+        form.appendChild(hexInput);
+
+        const coordInput = document.createElement('input');
+        coordInput.type = 'hidden';
+        coordInput.name = 'coordLists[]';
+        coordInput.value = document.getElementById('coords-' + i).innerText;
+        coordInput.className = 'print-data';
+        form.appendChild(coordInput);
+    });
+
+    form.submit();
 }
 </script>
 </body>
